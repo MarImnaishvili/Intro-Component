@@ -177,7 +177,6 @@ export default function FormComponent() {
 }
 
 const FormDiv = styled.form`
-  /* width: 32.7rem; */
   max-width: 100%;
   background-color: #fff;
   box-shadow: 0px 8px 0px 0px rgba(0, 0, 0, 0.1469);
@@ -266,7 +265,10 @@ const InputWrrapper = styled.div<formdatavaliderrorType>`
       line-height: 2.6rem;
       letter-spacing: 0.25px;
       text-align: left;
-      color: rgba(61, 59, 72, 0.564);
+      color: ${(props) =>
+        props.formdatavaliderror
+          ? "rgba(255, 121, 121, 1)"
+          : "rgba(61, 59, 72, 0.564)"};
     }
   }
   .errorMassage {
