@@ -67,7 +67,7 @@ export default function FormComponent() {
   console.log(arrayData);
   return (
     <FormDiv onSubmit={handleSubmit}>
-      <InputWrrapper formdatavaliderror={formDataValid.fNameValid}>
+      <InputWrrapper formdatavaliderror={formDataValid.fNameValid.toString()}>
         <input
           type="text"
           id="fName"
@@ -91,7 +91,7 @@ export default function FormComponent() {
           {formDataValid.fNameValid ? "First Name cannot be empty" : ""}
         </span>
       </InputWrrapper>
-      <InputWrrapper formdatavaliderror={formDataValid.lNameValid}>
+      <InputWrrapper formdatavaliderror={formDataValid.lNameValid.toString()}>
         <input
           type="text"
           id="lName"
@@ -115,7 +115,7 @@ export default function FormComponent() {
           {formDataValid.lNameValid ? "Last Name cannot be empty" : ""}
         </span>
       </InputWrrapper>
-      <InputWrrapper formdatavaliderror={formDataValid.emailValid}>
+      <InputWrrapper formdatavaliderror={formDataValid.emailValid.toString()}>
         <input
           type="email"
           id="email"
@@ -141,7 +141,9 @@ export default function FormComponent() {
           {formDataValid.emailValid ? "Looks like this is not an email" : ""}
         </span>
       </InputWrrapper>
-      <InputWrrapper formdatavaliderror={formDataValid.passwordValid}>
+      <InputWrrapper
+        formdatavaliderror={formDataValid.passwordValid.toString()}
+      >
         <input
           type="password"
           id="password"
@@ -230,7 +232,7 @@ const FormDiv = styled.form`
 `;
 
 interface formdatavaliderrorType {
-  formdatavaliderror: boolean;
+  formdatavaliderror: string;
 }
 
 const InputWrrapper = styled.div<formdatavaliderrorType>`
@@ -245,7 +247,7 @@ const InputWrrapper = styled.div<formdatavaliderrorType>`
     height: 5.6rem;
     padding: 2rem 1.5rem;
     border: ${(props) =>
-      props.formdatavaliderror
+      props.formdatavaliderror === "true"
         ? "1px solid rgba(255, 121, 121, 1)"
         : "1px solid rgba(222, 222, 222, 1)"};
     border-radius: 1rem;
@@ -266,7 +268,7 @@ const InputWrrapper = styled.div<formdatavaliderrorType>`
       letter-spacing: 0.25px;
       text-align: left;
       color: ${(props) =>
-        props.formdatavaliderror
+        props.formdatavaliderror === "true"
           ? "rgba(255, 121, 121, 1)"
           : "rgba(61, 59, 72, 0.564)"};
     }
